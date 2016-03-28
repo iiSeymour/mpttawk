@@ -1,0 +1,39 @@
+#!/usr/bin/env awk -f
+
+function mptt(tree, node, preorder) {
+
+    stack[++stack_ptr] = tree[node];
+
+    while (stack_ptr) {
+        # pop from stack
+        node = stack[stack_ptr];
+        delete stack[stack_ptr--];
+
+        preorder[node] = (preorder[node]? preorder[node] OFS: "") ++order;
+
+        if (!visited[node]) {
+            # push node to stack
+            stack[++stack_ptr] = node;
+            # mark node as visited
+            visited[node]++;
+            # push all child nodes to the stack
+            n = split(tree[node], children);
+            for (i=n; i>0; i--) {
+                stack[++stack_ptr] = children[i];
+            }
+        }
+    }
+
+}
+
+BEGIN {
+    SKIP = 1;
+    root = "root";
+}
+NR > SKIP { tree[$1] = (tree[$1] ? tree[$1] FS $2 : $2); }
+END {
+    mptt(tree, root, preorder);
+    for (node in preorder) {
+        print node, preorder[node];
+    }
+}

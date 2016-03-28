@@ -1,0 +1,22 @@
+parent,child
+root,technologies
+technologies,programming languages
+technologies,os
+os,windows
+os,linux
+os,mac
+programming languages,static
+programming languages,dynamic
+dynamic,python
+dynamic,awk
+dynamic,javascript
+static,c
+static,c++
+static,java
+technologies,databases,
+databases,sql
+sql,mysql
+sql,mssql
+sql,postgres
+databases,nosql
+nosql,mongodb

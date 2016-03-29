@@ -13,7 +13,7 @@ dynamic,javascript
 static,c
 static,c++
 static,java
-technologies,databases,
+technologies,databases
 databases,sql
 sql,mysql
 sql,mssql
